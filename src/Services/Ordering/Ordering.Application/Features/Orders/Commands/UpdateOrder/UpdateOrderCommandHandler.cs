@@ -26,7 +26,7 @@ namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
             _logger = logger;
         }
 
-        public async Task<Unit> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
         {
             var orderToUpdate = await _orderRepository.GetByIdAsync(request.Id);
             if (orderToUpdate == null)
@@ -37,9 +37,6 @@ namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
             _mapper.Map(request, orderToUpdate, typeof(UpdateOrderCommand), typeof(Order));
             await _orderRepository.UpdateAsync(orderToUpdate);
             _logger.LogInformation($"Order {orderToUpdate.Id} is successfully updated.");
-
-            return Unit.Value;
-
         }
     }
 }
