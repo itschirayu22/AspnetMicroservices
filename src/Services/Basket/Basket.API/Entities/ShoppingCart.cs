@@ -15,13 +15,14 @@
 
         public decimal TotalPrice
         {
-            get { 
-                decimal totalPrice = 0;
+            get
+            {
+                decimal totalprice = 0;
                 foreach (var item in Items)
                 {
-                    totalPrice += item.Price;
+                    totalprice += item.Price * item.Quantity;
                 }
-                return totalPrice;
+                return totalprice;
             }
         }
 
