@@ -31,6 +31,7 @@ namespace Ordering.API.Controllers
         }
 
         //testing Purpose
+        //This we implement when we consume RabbitMQ event in BasketCheckoutConsumer
         [HttpPost(Name = "CheckoutOrder")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)
